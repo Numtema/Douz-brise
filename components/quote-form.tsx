@@ -5,9 +5,11 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
 import { Leaf, Check, GlassWater, Heart } from 'lucide-react';
+import { motion } from 'motion/react';
 
 const formSchema = z.object({
-  name: z.string().min(2, 'Le nom est requis'),
+  firstName: z.string().min(2, 'Le prénom est requis'),
+  lastName: z.string().optional(),
   email: z.string().email('Email invalide'),
   phone: z.string().min(10, 'Numéro de téléphone requis'),
   eventType: z.string().min(1, 'Type d\'événement requis'),
@@ -15,7 +17,6 @@ const formSchema = z.object({
   location: z.string().min(1, 'Lieu requis'),
   guests: z.string().min(1, 'Nombre d\'invités requis'),
   formule: z.string().min(1, 'Formule souhaitée requise'),
-  allergies: z.string().optional(),
   message: z.string().optional(),
 });
 
@@ -29,9 +30,31 @@ export function QuoteForm() {
 
   const onSubmit = async (data: z.infer<typeof formSchema>) => {
     setIsSubmitting(true);
-    // Simulate API call
+    // Format message for WhatsApp
+    const message = `*Nouvelle demande de devis - Dou'z Brise* 🌿%0A
+*Contact*
+Nom: ${data.firstName} ${data.lastName || ''}
+Email: ${data.email}
+Tél: ${data.phone}%0A
+*Événement*
+Type: ${data.eventType}
+Date: ${data.date}
+Lieu: ${data.location}
+Invités: ${data.guests}%0A
+*Formule / Format souhaité*
+${data.formule}%0A
+*Message / Précisions*
+${data.message || 'Aucun message particulier.'}`;
+
+    // Target WhatsApp Number
+    const targetPhone = '33675976921';
+    
+    // Artificial delay for animation wow effect
     await new Promise(resolve => setTimeout(resolve, 1500));
-    console.log(data);
+    
+    // Redirect to WhatsApp
+    window.open(`https://wa.me/${targetPhone}?text=${encodeURIComponent(message)}`, '_blank');
+    
     setIsSubmitting(false);
     setIsSuccess(true);
   };
@@ -64,10 +87,11 @@ export function QuoteForm() {
         <div className="grid lg:grid-cols-5 gap-12 max-w-6xl mx-auto">
           <div className="lg:col-span-2">
             <h2 className="font-serif text-4xl sm:text-5xl font-bold text-green-deep tracking-tight mb-6">
-              Parlez-nous de votre événement.
+              Parlons de votre événement.
             </h2>
+            <p className="text-xl font-serif text-green-brand mb-4">Demandez un devis gratuit.</p>
             <p className="text-lg text-text-soft mb-8">
-              Réponse personnalisée sous 48h selon la date, le lieu, le nombre d'invités et le type de prestation souhaitée.
+              Réponse personnalisée sous 24 à 48h ouvrées. Un acompte de 25% est demandé pour bloquer la date, le solde le jour de la prestation.
             </p>
             <div className="bg-cream rounded-2xl p-6 border border-border">
               <p className="text-sm text-text-main">
@@ -97,36 +121,51 @@ export function QuoteForm() {
               <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
                 <div className="grid sm:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-sm font-medium text-text-main mb-2">Prénom & Nom *</label>
+                    <label htmlFor="firstName" className="block text-sm font-medium text-text-main mb-2">Prénom *</label>
                     <input 
-                      {...register('name')}
+                      id="firstName"
+                      {...register('firstName')}
                       className="w-full bg-cream-soft border border-border rounded-xl px-4 py-3 text-text-main focus:outline-none focus:border-green-brand focus:ring-1 focus:ring-green-brand transition-colors"
                     />
-                    {errors.name && <p className="text-strawberry text-xs mt-1">{errors.name.message}</p>}
+                    {errors.firstName && <p className="text-strawberry text-xs mt-1">{errors.firstName.message}</p>}
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-text-main mb-2">Email *</label>
+                    <label htmlFor="lastName" className="block text-sm font-medium text-text-main mb-2">Nom (optionnel)</label>
                     <input 
+                      id="lastName"
+                      {...register('lastName')}
+                      className="w-full bg-cream-soft border border-border rounded-xl px-4 py-3 text-text-main focus:outline-none focus:border-green-brand focus:ring-1 focus:ring-green-brand transition-colors"
+                    />
+                  </div>
+                </div>
+
+                <div className="grid sm:grid-cols-2 gap-6">
+                  <div>
+                    <label htmlFor="email" className="block text-sm font-medium text-text-main mb-2">Email *</label>
+                    <input 
+                      id="email"
                       type="email"
                       {...register('email')}
                       className="w-full bg-cream-soft border border-border rounded-xl px-4 py-3 text-text-main focus:outline-none focus:border-green-brand focus:ring-1 focus:ring-green-brand transition-colors"
                     />
                     {errors.email && <p className="text-strawberry text-xs mt-1">{errors.email.message}</p>}
                   </div>
-                </div>
-
-                <div className="grid sm:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-sm font-medium text-text-main mb-2">Téléphone *</label>
+                    <label htmlFor="phone" className="block text-sm font-medium text-text-main mb-2">Téléphone *</label>
                     <input 
+                      id="phone"
                       {...register('phone')}
                       className="w-full bg-cream-soft border border-border rounded-xl px-4 py-3 text-text-main focus:outline-none focus:border-green-brand focus:ring-1 focus:ring-green-brand transition-colors"
                     />
                     {errors.phone && <p className="text-strawberry text-xs mt-1">{errors.phone.message}</p>}
                   </div>
+                </div>
+
+                <div className="grid sm:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-sm font-medium text-text-main mb-2">Type d'événement *</label>
+                    <label htmlFor="eventType" className="block text-sm font-medium text-text-main mb-2">Type d'événement *</label>
                     <select 
+                      id="eventType"
                       {...register('eventType')}
                       className="w-full bg-cream-soft border border-border rounded-xl px-4 py-3 text-text-main focus:outline-none focus:border-green-brand focus:ring-1 focus:ring-green-brand transition-colors appearance-none"
                     >
@@ -139,32 +178,23 @@ export function QuoteForm() {
                     </select>
                     {errors.eventType && <p className="text-strawberry text-xs mt-1">{errors.eventType.message}</p>}
                   </div>
-                </div>
-
-                <div className="grid sm:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-sm font-medium text-text-main mb-2">Date prévue *</label>
+                    <label htmlFor="date" className="block text-sm font-medium text-text-main mb-2">Date prévue *</label>
                     <input 
+                      id="date"
                       type="date"
                       {...register('date')}
                       className="w-full bg-cream-soft border border-border rounded-xl px-4 py-3 text-text-main focus:outline-none focus:border-green-brand focus:ring-1 focus:ring-green-brand transition-colors"
                     />
                     {errors.date && <p className="text-strawberry text-xs mt-1">{errors.date.message}</p>}
                   </div>
-                  <div>
-                    <label className="block text-sm font-medium text-text-main mb-2">Lieu / Ville *</label>
-                    <input 
-                      {...register('location')}
-                      className="w-full bg-cream-soft border border-border rounded-xl px-4 py-3 text-text-main focus:outline-none focus:border-green-brand focus:ring-1 focus:ring-green-brand transition-colors"
-                    />
-                    {errors.location && <p className="text-strawberry text-xs mt-1">{errors.location.message}</p>}
-                  </div>
                 </div>
 
                 <div className="grid sm:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-sm font-medium text-text-main mb-2">Nombre d'invités *</label>
+                    <label htmlFor="guests" className="block text-sm font-medium text-text-main mb-2">Nombre d'invités *</label>
                     <input 
+                      id="guests"
                       type="number"
                       {...register('guests')}
                       className="w-full bg-cream-soft border border-border rounded-xl px-4 py-3 text-text-main focus:outline-none focus:border-green-brand focus:ring-1 focus:ring-green-brand transition-colors"
@@ -172,38 +202,53 @@ export function QuoteForm() {
                     {errors.guests && <p className="text-strawberry text-xs mt-1">{errors.guests.message}</p>}
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-text-main mb-2">Formule souhaitée *</label>
+                    <label htmlFor="formule" className="block text-sm font-medium text-text-main mb-2">Formule ou Format envisagé *</label>
                     <select 
+                      id="formule"
                       {...register('formule')}
                       className="w-full bg-cream-soft border border-border rounded-xl px-4 py-3 text-text-main focus:outline-none focus:border-green-brand focus:ring-1 focus:ring-green-brand transition-colors appearance-none"
                     >
-                      <option value="">Sélectionnez...</option>
-                      <option value="cocktail">Cocktail Fraîcheur (690 €)</option>
-                      <option value="tropicale">Expérience Tropicale (950 €)</option>
-                      <option value="brunch">Brunch Healthy (780 €)</option>
-                      <option value="mesure">Sur mesure (Dès 1 200 €)</option>
-                      <option value="atelier">Atelier Smoothie / Veggie-shake</option>
-                      <option value="jesaispas">Je ne sais pas encore</option>
+                      <optgroup label="Nos Formules">
+                        <option value="">Sélectionnez...</option>
+                        <option value="Cocktail Fraîcheur">Cocktail Fraîcheur</option>
+                        <option value="Expérience Tropicale">Expérience Tropicale</option>
+                        <option value="Brunch Healthy">Brunch Healthy</option>
+                        <option value="Sur-mesure">Sur-mesure</option>
+                        <option value="Atelier Smoothie / Veggie-shake">Atelier Smoothie / Veggie-shake</option>
+                      </optgroup>
+                      <optgroup label="Commande au Format">
+                        <option value="Format S (33cl)">Format S (33cl)</option>
+                        <option value="Format M (50cl)">Format M (50cl)</option>
+                        <option value="Format L">Format L</option>
+                        <option value="Format XL">Format XL</option>
+                        <option value="Format Tisane XXS/XS">Format Tisane (XXS/XS)</option>
+                      </optgroup>
+                      <optgroup label="Autre">
+                        <option value="Je ne sais pas encore">Je ne sais pas encore</option>
+                      </optgroup>
                     </select>
                     {errors.formule && <p className="text-strawberry text-xs mt-1">{errors.formule.message}</p>}
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-text-main mb-2">Allergies ou contraintes (optionnel)</label>
+                  <label htmlFor="location" className="block text-sm font-medium text-text-main mb-2">Lieu de l'événement (Ville ou lieu de réception) *</label>
                   <input 
-                    {...register('allergies')}
+                    id="location"
+                    {...register('location')}
                     className="w-full bg-cream-soft border border-border rounded-xl px-4 py-3 text-text-main focus:outline-none focus:border-green-brand focus:ring-1 focus:ring-green-brand transition-colors"
                   />
+                  {errors.location && <p className="text-strawberry text-xs mt-1">{errors.location.message}</p>}
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-text-main mb-2">Message libre (optionnel)</label>
+                  <label htmlFor="message" className="block text-sm font-medium text-text-main mb-2">Message libre (optionnel)</label>
                   <textarea 
+                    id="message"
                     {...register('message')}
                     rows={4}
                     className="w-full bg-cream-soft border border-border rounded-xl px-4 py-3 text-text-main focus:outline-none focus:border-green-brand focus:ring-1 focus:ring-green-brand transition-colors"
-                    placeholder="Parlez-nous un peu plus de l'ambiance souhaitée..."
+                    placeholder="Décrivez votre projet, vos envies, vos questions..."
                   ></textarea>
                 </div>
 
@@ -211,9 +256,16 @@ export function QuoteForm() {
                   <button 
                     type="submit" 
                     disabled={isSubmitting}
-                    className="w-full bg-green-brand text-white hover:bg-green-deep rounded-full py-4 text-sm font-bold tracking-wider uppercase transition-colors disabled:opacity-70 disabled:cursor-not-allowed shadow-btn"
+                    className="w-full relative flex justify-center items-center overflow-hidden bg-green-brand text-white hover:bg-green-deep rounded-full py-4 text-sm font-bold tracking-wider uppercase transition-all shadow-btn active:scale-95 disabled:opacity-90 disabled:cursor-wait"
                   >
-                    {isSubmitting ? 'Envoi en cours...' : 'Envoyer ma demande de devis'}
+                    {isSubmitting ? (
+                        <motion.div 
+                          animate={{ rotate: 360 }}
+                          transition={{ repeat: Infinity, duration: 1, ease: "linear" }}
+                          className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full mr-3"
+                        />
+                    ) : null}
+                    <span>{isSubmitting ? 'Préparation vers WhatsApp...' : 'Envoyer ma demande de devis'}</span>
                   </button>
                 </div>
               </form>

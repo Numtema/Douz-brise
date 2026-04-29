@@ -14,9 +14,10 @@ export function Testimonials() {
     <section id="avis" className="py-24 bg-cream-soft">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-2xl mx-auto mb-16">
-          <h2 className="font-serif text-4xl sm:text-5xl font-bold text-green-deep tracking-tight mb-6">
-            Ils ont goûté l'expérience Dou'z Brise.
+          <h2 className="font-serif text-4xl sm:text-5xl font-bold text-green-deep tracking-tight mb-4">
+            Ils nous font confiance
           </h2>
+          <p className="text-xl text-text-soft">Ce que disent nos clients.</p>
         </div>
 
         <div className="grid md:grid-cols-2 gap-8 lg:gap-12 max-w-5xl mx-auto">

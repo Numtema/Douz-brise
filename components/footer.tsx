@@ -30,10 +30,10 @@ export function Footer() {
         </div>
 
         <div className="border-t border-white/10 pt-16">
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12">
+          <div className="grid md:grid-cols-3 gap-12 text-center">
             
             {/* Brand */}
-            <div className="lg:col-span-1">
+            <div className="flex flex-col items-center">
               <div className="inline-flex items-center gap-2 mb-6">
                 <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-white font-serif font-bold text-sm">
                   db
@@ -48,9 +48,9 @@ export function Footer() {
             </div>
 
             {/* Contact */}
-            <div>
+            <div className="flex flex-col items-center">
               <h4 className="font-bold text-white mb-6 uppercase tracking-wider text-sm">Contact</h4>
-              <ul className="space-y-4">
+              <ul className="space-y-4 flex flex-col items-center">
                 <li>
                   <a href="tel:0675976921" className="text-sm text-green-light/80 hover:text-white flex items-center gap-3 transition-colors">
                     <Phone size={16} />
@@ -64,7 +64,7 @@ export function Footer() {
                   </a>
                 </li>
                 <li>
-                  <div className="text-sm text-green-light/80 flex items-center gap-3">
+                  <div className="text-sm text-green-light/80 flex items-center gap-3 text-center">
                     <MapPin size={16} className="shrink-0" />
                     <span>Le Havre, Seine-Maritime<br/>Jusqu'à 100 km</span>
                   </div>
@@ -73,9 +73,9 @@ export function Footer() {
             </div>
 
             {/* Socials */}
-            <div>
+            <div className="flex flex-col items-center">
               <h4 className="font-bold text-white mb-6 uppercase tracking-wider text-sm">Réseaux</h4>
-              <ul className="space-y-4">
+              <ul className="space-y-4 flex flex-col items-center">
                 <li>
                   <a href="https://instagram.com/douzbrise" target="_blank" rel="noopener noreferrer" className="text-sm text-green-light/80 hover:text-white flex items-center gap-3 transition-colors">
                     <Instagram size={16} />
@@ -83,7 +83,7 @@ export function Footer() {
                   </a>
                 </li>
                 {/* Placeholder for other networks that were mentioned */}
-                <span className="text-sm text-green-light/50">Facebook, TikTok, LinkedIn...</span>
+                <li><span className="text-sm text-green-light/50">Facebook, TikTok, LinkedIn...</span></li>
               </ul>
             </div>
           </div>
@@ -91,7 +91,7 @@ export function Footer() {
 
         {/* Copyright */}
         <div className="border-t border-white/10 mt-16 pt-8 text-center text-xs text-green-light/50">
-          <p>&copy; {new Date().getFullYear()} Dou'z Brise. Tous droits réservés.</p>
+          <p>&copy; {new Date().getFullYear()} Dou'z Brise — Tous droits réservés · Micro-entreprise Fraich'r</p>
         </div>
       </div>
     </footer>

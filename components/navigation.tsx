@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { motion } from 'motion/react';
+import { motion, AnimatePresence } from 'motion/react';
 import { Menu, X } from 'lucide-react';
 import Link from 'next/link';
 
@@ -22,84 +22,93 @@ export function Navigation() {
     { href: '#menu', label: 'Menu' },
     { href: '#ateliers', label: 'Ateliers' },
     { href: '#avis', label: 'Avis' },
-    { href: '#contact', label: 'Contact' },
   ];
 
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-cream-soft/90 backdrop-blur-md shadow-sm border-b border-green-deep/10' : 'bg-transparent'
-      }`}
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-20">
+    <div className="fixed top-0 left-0 right-0 z-50 flex justify-center px-4 sm:px-6 pt-4 pb-4 pointer-events-none">
+      <motion.header
+        initial={{ y: -100 }}
+        animate={{ y: 0 }}
+        className={`pointer-events-auto transition-all duration-500 rounded-full w-full max-w-5xl ${
+          isScrolled 
+            ? 'bg-white/80 backdrop-blur-xl shadow-[0_8px_32px_rgba(36,59,29,0.08)] border border-green-deep/5 px-4 py-2.5' 
+            : 'bg-cream-soft rounded-full px-4 py-4 shadow-sm border border-border/50'
+        }`}
+      >
+        <div className="flex justify-between items-center h-12">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 group">
+          <Link href="/" className="flex items-center gap-2 group flex-shrink-0">
             <div className="w-10 h-10 rounded-full bg-gradient-to-br from-orange to-green-brand flex items-center justify-center text-white font-serif font-bold text-xl shadow-sm group-hover:shadow-md transition-all">
               db
             </div>
-            <span className="font-serif font-bold text-2xl text-green-deep hidden sm:block">
+            <span className="font-serif font-bold text-2xl text-green-deep hidden lg:block">
               Dou'z Brise
             </span>
           </Link>
 
           {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center gap-8">
+          <nav className="hidden md:flex items-center gap-6 lg:gap-8">
             {links.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
-                className="text-text-main hover:text-green-brand font-medium text-sm tracking-wide transition-colors"
+                className="text-text-main hover:text-green-brand font-medium text-[15px] tracking-wide transition-colors"
               >
                 {link.label}
               </a>
             ))}
+          </nav>
+          
+          <div className="hidden md:block">
             <a
               href="#contact"
               className="inline-flex items-center justify-center gap-2 bg-green-brand text-white border border-green-brand rounded-full px-6 py-2.5 font-bold text-sm tracking-wider uppercase shadow-btn hover:bg-green-deep hover:-translate-y-0.5 transition-all active:scale-95"
             >
               Demander un devis
             </a>
-          </nav>
+          </div>
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden p-2 text-green-deep"
+            className="md:hidden p-2 text-green-deep hover:bg-green-light/10 rounded-full transition-colors"
             onClick={() => setIsOpen(!isOpen)}
           >
             {isOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
-      </div>
+      </motion.header>
 
       {/* Mobile Nav */}
-      {isOpen && (
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="md:hidden bg-cream-soft border-b border-border shadow-lg absolute top-20 left-0 right-0"
-        >
-          <div className="px-4 py-6 flex flex-col gap-4">
-            {links.map((link) => (
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -20, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -20, scale: 0.95 }}
+            className="md:hidden bg-cream-soft border border-border shadow-xl absolute top-24 left-4 right-4 rounded-3xl overflow-hidden pointer-events-auto origin-top"
+          >
+            <div className="px-6 py-8 flex flex-col gap-4">
+              {links.map((link) => (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setIsOpen(false)}
+                  className="block text-lg font-medium text-text-main hover:text-green-brand py-3 border-b border-green-deep/5"
+                >
+                  {link.label}
+                </a>
+              ))}
               <a
-                key={link.href}
-                href={link.href}
+                href="#contact"
                 onClick={() => setIsOpen(false)}
-                className="block text-lg font-medium text-text-main hover:text-green-brand py-2 border-b border-green-deep/5"
+                className="mt-6 flex w-full justify-center items-center bg-green-brand text-white rounded-full px-6 py-4 font-bold tracking-wider uppercase shadow-btn active:scale-95"
               >
-                {link.label}
+                Demander un devis
               </a>
-            ))}
-            <a
-              href="#contact"
-              onClick={() => setIsOpen(false)}
-              className="mt-4 flex w-full justify-center items-center bg-green-brand text-white rounded-full px-6 py-4 font-bold tracking-wider uppercase shadow-btn active:scale-95"
-            >
-              Demander un devis
-            </a>
-          </div>
-        </motion.div>
-      )}
-    </header>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
   );
 }

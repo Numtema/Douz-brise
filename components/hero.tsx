@@ -6,16 +6,35 @@ import { Leaf, Droplet, Store, MapPin } from 'lucide-react';
 
 export function Hero() {
   const badges = [
-    { icon: Leaf, text: '100% Naturel' },
-    { icon: Store, text: 'Fait maison' },
+    { icon: Leaf, text: 'Ingrédients naturels' },
     { icon: Droplet, text: 'Sans sucre ajouté' },
-    { icon: MapPin, text: 'Jusqu\'à 100 km' },
+    { icon: Store, text: 'Frais & fait maison' },
+    { icon: MapPin, text: 'Le Havre + 100 km' },
   ];
 
   return (
-    <section className="pt-32 pb-16 md:pt-40 md:pb-24 overflow-hidden relative">
+    <section className="pt-24 pb-16 md:pt-32 md:pb-24 overflow-hidden relative">
+      <div className="absolute inset-0 bg-cream/50 z-0"></div>
       <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cream-paper.png')] opacity-20 pointer-events-none z-0"></div>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      
+      {/* Floating Elements */}
+      <motion.div 
+        animate={{ y: [0, -20, 0], rotate: [0, 5, 0] }}
+        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute top-20 left-[10%] w-32 h-32 bg-green-light/20 rounded-full blur-2xl z-0"
+      />
+      <motion.div 
+        animate={{ y: [0, 30, 0], x: [0, 15, 0] }}
+        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+        className="absolute bottom-20 left-[30%] w-48 h-48 bg-orange/10 rounded-full blur-3xl z-0"
+      />
+      <motion.div 
+        animate={{ y: [0, -40, 0], rotate: [0, -10, 0] }}
+        transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute top-40 right-[15%] w-64 h-64 bg-green-brand/10 rounded-full blur-3xl z-0"
+      />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 mt-12 md:mt-24">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-8 items-center">
           {/* Content */}
           <motion.div 
@@ -26,15 +45,15 @@ export function Hero() {
           >
             <div className="inline-flex flex-col gap-4 mb-8">
               <span className="text-sm font-bold text-green-brand uppercase tracking-wider bg-green-light/30 w-fit px-4 py-1.5 rounded-full border border-green-brand/20">
-                Bar à boissons naturelles & végétales
+                Le plein de vitalité
               </span>
               <h1 className="font-serif text-5xl sm:text-6xl lg:text-7xl font-bold leading-[1.05] tracking-tight text-green-deep">
-                Le bar à jus qui apporte <span className="text-green-brand font-script font-normal text-[5.5rem] sm:text-[7rem] lg:text-[8rem] leading-[0.5] sm:leading-[0.5] lg:leading-[0.5] mt-6 mb-4 block underline decoration-green-light/40 underline-offset-4">fraîcheur,</span> couleur et bien-être à vos événements.
+                Des boissons naturelles & <span className="text-green-brand font-script font-normal text-[5.5rem] sm:text-[7rem] lg:text-[8rem] leading-[0.5] sm:leading-[0.5] lg:leading-[0.5] mt-6 mb-4 block underline decoration-green-light/40 underline-offset-4">végétales</span> pour vos événements.
               </h1>
             </div>
             
             <p className="text-xl text-text-soft mb-10 leading-relaxed font-medium">
-              Dou'z Brise imagine et installe des bars à boissons végétales, smoothies, jus frais, infusions et veggie-shakes pour mariages, EVJF, brunchs et événements privés en Seine-Maritime.
+              Mariages, brunchs, ateliers et prestations sur mesure — des créations fraîches, gourmandes et faites maison qui enchantent vos invités.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 mb-12">

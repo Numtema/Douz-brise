@@ -37,7 +37,7 @@ export function Transformation() {
             <div className="relative h-[650px] w-full rounded-[2.5rem] overflow-hidden shadow-soft border-[6px] border-white z-10">
               <Image
                 src="https://picsum.photos/seed/freshfruits1/800/1200"
-                alt="Préparation de boissons"
+                alt="Préparation de boissons naturelles, végétales et équilibrées pour un bar événementiel"
                 fill
                 className="object-cover transition-transform duration-1000 hover:scale-[1.03]"
                 referrerPolicy="no-referrer"

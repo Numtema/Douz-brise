@@ -22,7 +22,20 @@ const caveat = Caveat({
 
 export const metadata: Metadata = {
   title: "Dou'z Brise | Bar à Boissons Naturelles & Végétales",
-  description: "Dou'z Brise crée des bars à boissons naturelles, végétales et faites maison pour transformer vos événements en expériences fraîches, gourmandes et mémorables.",
+  description: "Dou'z Brise propose des bars à boissons naturelles, végétales et équilibrées pour sublimer vos événements au Havre et en Normandie (mariage, EVJF, entreprises).",
+  keywords: ["bar à boissons", "cocktails sans alcool", "boissons végétales", "traiteur boisson", "Le Havre", "Seine-Maritime", "mariage", "événementiel local"],
+  openGraph: {
+    title: "Dou'z Brise | Bar à Boissons Naturelles & Événementiel",
+    description: "Des recettes fraîches, saines et personnalisées pour vos plus beaux événements. Goûtez la différence.",
+    url: 'https://douzbrise.fr',
+    siteName: "Dou'z Brise",
+    locale: 'fr_FR',
+    type: 'website',
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({children}: {children: React.ReactNode}) {

@@ -1,6 +1,6 @@
-import { TopBanner } from '@/components/top-banner';
 import { Navigation } from '@/components/navigation';
 import { Hero } from '@/components/hero';
+import { Marquee } from '@/components/marquee';
 import { Problem } from '@/components/problem';
 import { Transformation } from '@/components/transformation';
 import { Offers } from '@/components/offers';
@@ -15,11 +15,11 @@ import { Footer } from '@/components/footer';
 
 export default function Page() {
   return (
-    <div className="min-h-screen">
-      <TopBanner />
+    <div className="min-h-screen pt-24 sm:pt-28">
       <Navigation />
       <main>
         <Hero />
+        <Marquee />
         <Problem />
         <Transformation />
         <Offers />
