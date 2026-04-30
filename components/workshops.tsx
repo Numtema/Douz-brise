@@ -49,11 +49,10 @@ export function Workshops() {
 
           <div className="relative h-[500px] lg:h-[600px] w-full rounded-[2.5rem] overflow-hidden">
             <Image
-              src="https://picsum.photos/seed/workshop/800/1000"
-              alt="Atelier smoothie"
+              src="/assets/tropical-douz-brise.png"
+              alt="Atelier smoothie Dou'z Brise"
               fill
               className="object-cover"
-              referrerPolicy="no-referrer"
             />
           </div>
         </div>

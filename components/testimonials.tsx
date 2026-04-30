@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 export function Testimonials() {
   const testimonials = [
     {
@@ -11,8 +13,19 @@ export function Testimonials() {
   ];
 
   return (
-    <section id="avis" className="py-24 bg-cream-soft">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="avis" className="py-24 relative overflow-hidden">
+      {/* Background Image with Overlay */}
+      <div className="absolute inset-0 z-0">
+        <Image
+          src="/assets/sur-mesure-douz-brise.png"
+          alt="Dou'z Brise Background"
+          fill
+          className="object-cover opacity-20"
+        />
+        <div className="absolute inset-0 bg-cream-soft/80 backdrop-blur-[2px]"></div>
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center max-w-2xl mx-auto mb-16">
           <h2 className="font-serif text-4xl sm:text-5xl font-bold text-green-deep tracking-tight mb-4">
             Ils nous font confiance
