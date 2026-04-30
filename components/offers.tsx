@@ -11,7 +11,7 @@ export function Offers() {
       price: "690 €",
       subtitle: "Pour vin d’honneur ou accueil invités.",
       idealFor: "Idéal pour : accueil invités & vin d'honneur",
-      image: "/assets/transformation-drinks.png",
+      image: "/assets/hero-douz-brise-vitalite.png",
       features: [
         "40 à 60 personnes.",
         "2 boissons fraîches signatures.",

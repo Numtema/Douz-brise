@@ -1,6 +1,25 @@
+'use client';
+
+import { useState, useEffect } from 'react';
 import { MapPin } from 'lucide-react';
 
 export function GeographicArea() {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return (
+      <section className="py-16">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="h-64 rounded-[2rem] bg-green-light/5 animate-pulse"></div>
+        </div>
+      </section>
+    );
+  }
+
   return (
     <section className="py-16">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center bg-green-light/20 rounded-[2rem] p-8 sm:p-12 border border-green-brand/10">

@@ -49,10 +49,10 @@ export function Workshops() {
 
           <div className="relative h-[500px] lg:h-[600px] w-full rounded-[2.5rem] overflow-hidden">
             <Image
-              src="/assets/tropical-douz-brise.png"
+              src="/assets/format-douz-brise.png"
               alt="Atelier smoothie Dou'z Brise"
               fill
-              className="object-cover"
+              className="object-cover transition-transform duration-700 hover:scale-105"
             />
           </div>
         </div>
