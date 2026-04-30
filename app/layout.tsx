@@ -21,20 +21,50 @@ const caveat = Caveat({
 });
 
 export const metadata: Metadata = {
-  title: "Dou'z Brise | Bar à Boissons Naturelles & Végétales",
-  description: "Dou'z Brise propose des bars à boissons naturelles, végétales et équilibrées pour sublimer vos événements au Havre et en Normandie (mariage, EVJF, entreprises).",
-  keywords: ["bar à boissons", "cocktails sans alcool", "boissons végétales", "traiteur boisson", "Le Havre", "Seine-Maritime", "mariage", "événementiel local"],
+  title: {
+    default: "Dou'z Brise | Bar à Boissons Naturelles & Végétales Normandie",
+    template: "%s | Dou'z Brise"
+  },
+  description: "Découvrez Dou'z Brise, votre bar à boissons naturelles et végétales. Prestations événementielles sur mesure au Havre et en Normandie : mariages, ateliers, entreprises.",
+  keywords: ["bar à boissons", "cocktails sans alcool", "boissons végétales", "smoothies naturels", "animations événementielles", "Le Havre", "Seine-Maritime", "Normandie", "mariage bio", "traiteur local"],
+  authors: [{ name: "Laëtitia - Dou'z Brise" }],
+  creator: "Dou'z Brise",
+  metadataBase: new URL('https://douzbrise.fr'),
+  alternates: {
+    canonical: '/',
+  },
   openGraph: {
     title: "Dou'z Brise | Bar à Boissons Naturelles & Événementiel",
-    description: "Des recettes fraîches, saines et personnalisées pour vos plus beaux événements. Goûtez la différence.",
+    description: "Des recettes fraîches, saines et personnalisées pour vos plus beaux événements au Havre et en Normandie.",
     url: 'https://douzbrise.fr',
     siteName: "Dou'z Brise",
     locale: 'fr_FR',
     type: 'website',
+    images: [
+      {
+        url: '/assets/hero-douz-brise-vitalite.png',
+        width: 1200,
+        height: 630,
+        alt: "Dou'z Brise - Bar à boissons naturelles",
+      },
+    ],
   },
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: "Dou'z Brise | Bar à Boissons Naturelles",
+    description: "Prestations événementielles de boissons saines et végétales en Normandie.",
+    images: ['/assets/hero-douz-brise-vitalite.png'],
   },
 };
 

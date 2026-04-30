@@ -19,10 +19,10 @@ export function Navigation() {
   }, []);
 
   const links = [
-    { href: '#formules', label: 'Formules' },
-    { href: '#menu', label: 'Menu' },
-    { href: '#ateliers', label: 'Ateliers' },
-    { href: '#avis', label: 'Avis' },
+    { href: '/formules', label: 'Formules' },
+    { href: '/notre-menu', label: 'Menu' },
+    { href: '/ateliers', label: 'Ateliers' },
+    { href: '/avis', label: 'Avis' },
   ];
 
   return (
@@ -56,13 +56,14 @@ export function Navigation() {
           {/* Desktop Nav */}
           <nav className="hidden md:flex items-center gap-6 lg:gap-8">
             {links.map((link) => (
-              <a
+              <Link
                 key={link.href}
                 href={link.href}
                 className="text-text-main hover:text-green-brand font-medium text-[15px] tracking-wide transition-colors"
+                onClick={() => setIsOpen(false)}
               >
                 {link.label}
-              </a>
+              </Link>
             ))}
           </nav>
           
@@ -96,22 +97,22 @@ export function Navigation() {
           >
             <div className="px-6 py-8 flex flex-col gap-4">
               {links.map((link) => (
-                <a
+                <Link
                   key={link.href}
                   href={link.href}
                   onClick={() => setIsOpen(false)}
                   className="block text-lg font-medium text-text-main hover:text-green-brand py-3 border-b border-green-deep/5"
                 >
                   {link.label}
-                </a>
+                </Link>
               ))}
-              <a
-                href="#contact"
+              <Link
+                href="/#contact"
                 onClick={() => setIsOpen(false)}
                 className="mt-6 flex w-full justify-center items-center bg-green-brand text-white rounded-full px-6 py-4 font-bold tracking-wider uppercase shadow-btn active:scale-95"
               >
                 Demander un devis
-              </a>
+              </Link>
             </div>
           </motion.div>
         )}
