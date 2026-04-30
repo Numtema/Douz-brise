@@ -68,7 +68,7 @@ export function FAQ() {
                     exit={{ height: 0, opacity: 0 }}
                     transition={{ duration: 0.3, ease: 'easeInOut' }}
                   >
-                    <div className="px-6 pb-6 text-text-soft">
+                    <div className="px-6 pb-6 text-text-soft text-center px-12">
                       {faq.a}
                     </div>
                   </motion.div>

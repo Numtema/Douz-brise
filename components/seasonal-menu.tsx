@@ -135,22 +135,21 @@ export function SeasonalMenu() {
           viewport={{ once: true }}
           className="mt-24 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-stretch"
         >
-          <div className="lg:col-span-5 relative rounded-[2rem] overflow-hidden shadow-xl shadow-green-deep/10 min-h-[300px] lg:min-h-full group">
+          <div className="lg:col-span-12 xl:col-span-5 relative rounded-[2rem] overflow-hidden shadow-xl shadow-green-deep/10 min-h-[400px] group">
             <Image 
-              src="https://picsum.photos/seed/douzcups/800/800" 
+              src="/assets/format-douz-brise.png" 
               alt="Différents formats de boissons et cocktails proposés par Dou'z Brise pour vos événements" 
               fill
               className="object-cover transition-transform duration-1000 group-hover:scale-105"
-              referrerPolicy="no-referrer"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-green-deep/90 via-green-deep/40 to-transparent p-8 flex flex-col justify-end">
-              <span className="font-script text-3xl text-white mb-2">Nos formats</span>
+              <span className="font-script text-4xl text-white mb-2">Nos formats</span>
               <h3 className="text-2xl sm:text-3xl font-serif text-white font-bold leading-tight">Tailles & tarifs</h3>
-              <p className="text-cream mt-2 text-sm">Adaptés à toutes vos envies de fraîcheur ou de chaleur.</p>
+              <p className="text-cream mt-2 text-sm max-w-md">Nous adaptons nos contenants selon votre événement : verres, gobelets personnalisés ou bocaux vintage.</p>
             </div>
           </div>
 
-          <div className="lg:col-span-7 flex flex-col gap-6">
+          <div className="lg:col-span-12 xl:col-span-7 flex flex-col gap-6">
             <div className="bg-white rounded-3xl p-8 shadow-lg shadow-green-deep/5 border border-green-light/20 hover:border-green-brand/30 transition-colors">
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-10 h-10 rounded-full bg-cream flex items-center justify-center text-green-brand shrink-0">

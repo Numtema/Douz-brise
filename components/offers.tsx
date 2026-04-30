@@ -11,7 +11,7 @@ export function Offers() {
       price: "690 €",
       subtitle: "Pour vin d’honneur ou accueil invités.",
       idealFor: "Idéal pour : accueil invités & vin d'honneur",
-      image: "https://picsum.photos/seed/cocktail1/600/400",
+      image: "/assets/transformation-drinks.png",
       features: [
         "40 à 60 personnes.",
         "2 boissons fraîches signatures.",
@@ -30,7 +30,7 @@ export function Offers() {
       price: "950 €",
       subtitle: "Bar signature événementiel.",
       idealFor: "Idéal pour : mariages & événements premium",
-      image: "https://picsum.photos/seed/cocktail2/600/400",
+      image: "/assets/tropical-douz-brise.png",
       features: [
         "60 à 100 personnes.",
         "3 à 4 boissons premium.",
@@ -47,7 +47,7 @@ export function Offers() {
       price: "780 €",
       subtitle: "Pour le lendemain de mariage.",
       idealFor: "Idéal pour : brunch & lendemain de mariage",
-      image: "https://picsum.photos/seed/brunch1/600/400",
+      image: "/assets/brunch-douz-brise.png",
       features: [
         "30 à 50 personnes.",
         "Infusions & jus frais.",
@@ -64,7 +64,7 @@ export function Offers() {
       price: "Dès 1 200 €",
       subtitle: "Mariages premium, réceptions.",
       idealFor: "Idéal pour : réceptions premium & privées",
-      image: "https://picsum.photos/seed/premium1/600/400",
+      image: "/assets/sur-mesure-douz-brise.png",
       features: [
         "Volume adapté sur mesure.",
         "Mariages destination.",
@@ -149,10 +149,10 @@ export function Offers() {
 
                 <div className="border-t border-border/50 pt-6 mb-8 flex-grow">
                   <div className="mb-6 inline-block bg-green-light/30 text-green-deep font-bold text-[11px] uppercase tracking-wider px-3 py-1.5 rounded-full w-full text-center">{offer.idealFor}</div>
-                  <ul className="space-y-4">
+                  <ul className="space-y-4 flex flex-col items-center">
                     {offer.features.map((feat, fIdx) => (
-                      <li key={fIdx} className="flex gap-3 text-text-main text-sm">
-                        <Check size={18} className="text-green-brand flex-shrink-0 mt-0.5" />
+                      <li key={fIdx} className="flex gap-3 text-text-main text-sm text-center justify-center items-center">
+                        <Check size={18} className="text-green-brand flex-shrink-0" />
                         <span className="leading-tight">{feat}</span>
                       </li>
                     ))}

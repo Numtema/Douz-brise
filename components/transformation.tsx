@@ -36,11 +36,11 @@ export function Transformation() {
           >
             <div className="relative h-[650px] w-full rounded-[2.5rem] overflow-hidden shadow-soft border-[6px] border-white z-10">
               <Image
-                src="https://picsum.photos/seed/freshfruits1/800/1200"
-                alt="Préparation de boissons naturelles, végétales et équilibrées pour un bar événementiel"
+                src="/assets/transformation-drinks.png"
+                alt="Préparation de boissons naturelles et végétales Dou'z Brise"
                 fill
                 className="object-cover transition-transform duration-1000 hover:scale-[1.03]"
-                referrerPolicy="no-referrer"
+                priority
               />
             </div>
             {/* Decorative element */}
@@ -54,8 +54,8 @@ export function Transformation() {
             viewport={{ once: true }}
             className="order-1 lg:order-2"
           >
-            <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold text-green-deep tracking-tight mb-8 leading-tight">
-              Dou'z Brise transforme la pause boisson en vraie <span className="text-green-brand font-script font-normal text-6xl sm:text-7xl lg:text-8xl inline-block mt-2 transform -rotate-2">expérience sensorielle.</span>
+            <h2 className="font-serif text-4xl sm:text-5xl lg:text-7xl font-bold text-green-deep tracking-tight mb-8 leading-[1.1]">
+              Dou'z Brise transforme la pause boisson en <span className="text-green-brand font-script font-normal text-7xl sm:text-8xl lg:text-[9rem] block lg:inline-block mt-8 mb-4 decoration-green-light/40 underline-offset-4">expérience</span> sensorielle.
             </h2>
             <p className="text-xl text-text-soft mb-12 leading-relaxed">
               Des fruits frais, des laits végétaux, des infusions naturelles, une mise en scène élégante et un service humain pour offrir à vos invités une alternative saine, colorée et gourmande.

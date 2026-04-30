@@ -63,11 +63,11 @@ export function Problem() {
                 className="bg-cream-soft rounded-[2rem] p-8 border border-border shadow-sm hover:shadow-lg transition-all hover:-translate-y-2 relative overflow-hidden group"
               >
                 <div className="absolute -right-4 -top-4 w-24 h-24 bg-green-light/20 rounded-full blur-2xl group-hover:bg-green-light/40 transition-colors"></div>
-                <div className="w-12 h-12 bg-white text-green-brand rounded-full flex items-center justify-center mb-6 shadow-sm border border-border">
+                <div className="w-12 h-12 bg-white text-green-brand rounded-full flex items-center justify-center mb-6 shadow-sm border border-border mx-auto">
                   <Icon size={24} />
                 </div>
-                <h3 className="font-serif text-2xl font-bold text-green-deep mb-4">{prob.title}</h3>
-                <p className="text-text-soft leading-relaxed">
+                <h3 className="font-serif text-2xl font-bold text-green-deep mb-4 text-center">{prob.title}</h3>
+                <p className="text-text-soft leading-relaxed text-center">
                   {prob.desc}
                 </p>
               </motion.div>

@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Menu, X } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -38,8 +39,14 @@ export function Navigation() {
         <div className="flex justify-between items-center h-12">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 group flex-shrink-0">
-            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-orange to-green-brand flex items-center justify-center text-white font-serif font-bold text-xl shadow-sm group-hover:shadow-md transition-all">
-              db
+            <div className="relative w-12 h-12 lg:w-16 lg:h-16">
+              <Image
+                src="/assets/logo-douz-brise.png"
+                alt="Dou'z Brise Logo"
+                fill
+                className="object-contain"
+                priority
+              />
             </div>
             <span className="font-serif font-bold text-2xl text-green-deep hidden lg:block">
               Dou'z Brise

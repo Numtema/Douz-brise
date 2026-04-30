@@ -1,4 +1,5 @@
 import { Instagram, Mail, Phone, MapPin } from 'lucide-react';
+import Image from 'next/image';
 
 export function Footer() {
   return (
@@ -34,15 +35,17 @@ export function Footer() {
             
             {/* Brand */}
             <div className="flex flex-col items-center">
-              <div className="inline-flex items-center gap-2 mb-6">
-                <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-white font-serif font-bold text-sm">
-                  db
+              <div className="mb-6">
+                <div className="relative w-20 h-20">
+                  <Image
+                    src="/assets/logo-douz-brise.png"
+                    alt="Dou'z Brise Logo"
+                    fill
+                    className="object-contain"
+                  />
                 </div>
-                <span className="font-serif font-bold text-xl text-white">
-                  Dou'z Brise
-                </span>
               </div>
-              <p className="text-sm text-green-light/80 mb-6 font-script text-xl">
+              <p className="text-sm text-green-light/80 mb-6 font-script text-xl text-center">
                 Faites-vous plaisir sans culpabiliser.
               </p>
             </div>
